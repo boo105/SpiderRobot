@@ -2,23 +2,45 @@
 #include <wiringPi.h>
 #include <softPwm.h>
 
+// Left WiringPi Port Number
 #define LULeg 1
 #define LUJoint 26 // 4 
 #define LDLeg 7
 #define LDJoint 0
-
+// Right WiringPi Port Number
 #define RULeg 23 // 5 
 #define RUJoint 24 // 6 
 #define RDLeg 2
 #define RDJoint 3
 
-// ASCII CODE  lower
+// ASCII CODE lowercase for Input
 #define UP 119		// W
 #define DOWN 115	// S
 #define LEFT 97		// A
 #define RIGHT 100	// D
 #define EXIT 113	// Q
 #define ACTION 101	// E
+
+/*
+I think
+This source code should write to OOP
+*/
+
+/*
+Need to write global variable
+current Servo Motor Degree Info 
+
+int currentLULeg = 5;
+int currentLUJoint = 11;
+int currentLDLeg = 0;
+int currentLDJoint = 10;
+
+int currentRULeg = 20;
+int currentRUJoint = 19;
+int currentRDLeg = 12;
+int currentRDJoint = 12;
+
+*/
 
 // actually do move serve motor
 void moveServeMotor(char wiringPin, int degree)
@@ -52,6 +74,48 @@ void motorRDLeg(int degree)
 void motorRDJoint(int degree)
 { moveServeMotor(RDJoint, degree); }
 
+
+void initPosition()
+{
+	// init Position
+	motorRULeg(14);
+	motorRDLeg(14);
+	motorLDLeg(11);
+	motorLULeg(12);
+
+	motorRUJoint(13);
+	motorLDJoint(13);
+	motorLUJoint(15);
+	motorRDJoint(15);	
+	delay(500);
+}
+		
+void init()
+{
+	pinMode(LULeg, OUTPUT);
+	pinMode(LUJoint, OUTPUT);
+	pinMode(LDLeg, OUTPUT);
+	pinMode(LDJoint, OUTPUT);
+
+	pinMode(RULeg, OUTPUT);
+	pinMode(RUJoint, OUTPUT);
+	pinMode(RDLeg, OUTPUT);
+	pinMode(RDJoint, OUTPUT);
+
+	// Left Servo Motor
+	softPwmCreate(LULeg, 0, 200);
+	softPwmCreate(LUJoint, 0, 200);
+	softPwmCreate(LDLeg, 0, 200);
+	softPwmCreate(LDJoint, 0, 200);
+	// Right Servo Motor
+	softPwmCreate(RULeg, 0, 200);
+	softPwmCreate(RUJoint, 0, 200);
+	softPwmCreate(RDLeg, 0, 200);
+	softPwmCreate(RDJoint, 0, 200);
+
+	initPosition();
+}
+
 // Spider Robot has Movement fucntion
 void forward()
 {
@@ -69,6 +133,7 @@ void rotationToRight()
 {
 }
 
+// need to refactoring
 void dance()
 {
 	int currentLUJoint = 11;
@@ -102,42 +167,42 @@ void dance()
 	}
 }
 
+void dapForDance2(int operationLimit,int dir)
+{
+	for (int i = 0; i < operationLimit; i++)
+	{
+		currentLULeg += ( dir * -1);
+		currentRULeg += ( dir * -1);
+		currentLDLeg += dir;
+		currentRDLeg += dir;
+		motorLULeg(currentLULeg);
+		motorRULeg(currentRULeg);
+		motorLDLeg(currentLDLeg);
+		motorRDLeg(currentRDLeg);
+		delay(100);
+	}
+}
+
+// need to reactoring
 void dance2()
 {
+	initPosition();
+	
+	// This should be removed and replacing to global variable
 	int currentLULeg = 12;
 	int currentRULeg = 14;
 	int currentLDLeg = 11;
 	int currentRDLeg = 14;
 
-	int degree = 1;
 	int dir = 1;
 
-	for (int i = 0; i < 4; i++)
-	{
-		currentLULeg += ( dir * -1);
-		currentRULeg += ( dir * -1);
-		currentLDLeg += dir;
-		currentRDLeg += dir;
-		motorLULeg(currentLULeg);
-		motorRULeg(currentRULeg);
-		motorLDLeg(currentLDLeg);
-		motorRDLeg(currentRDLeg);
-		delay(100);
-	}
+	// Left Dap
+	dapForDance2(4, dir);
 
 	dir *= -1;
-	for (int i = 0; i < 8; i++)
-	{
-		currentLULeg += ( dir * -1);
-		currentRULeg += ( dir * -1);
-		currentLDLeg += dir;
-		currentRDLeg += dir;
-		motorLULeg(currentLULeg);
-		motorRULeg(currentRULeg);
-		motorLDLeg(currentLDLeg);
-		motorRDLeg(currentRDLeg);
-		delay(100);
-	}
+
+	// Right Dap
+	dapForDance2(8, dir);
 }
 
 void clearLineFromReadBuffer(void)
@@ -185,41 +250,6 @@ void movementManager()
 				printf("잘못된 명령어 입니다.\n");
 		}
 	}
-}
-		
-void init()
-{
-	pinMode(LULeg, OUTPUT);
-	pinMode(LUJoint, OUTPUT);
-	pinMode(LDLeg, OUTPUT);
-	pinMode(LDJoint, OUTPUT);
-
-	pinMode(RULeg, OUTPUT);
-	pinMode(RUJoint, OUTPUT);
-	pinMode(RDLeg, OUTPUT);
-	pinMode(RDJoint, OUTPUT);
-
-	softPwmCreate(LULeg, 0, 200);
-	softPwmCreate(LUJoint, 0, 200);
-	softPwmCreate(LDLeg, 0, 200);
-	softPwmCreate(LDJoint, 0, 200);
-
-	softPwmCreate(RULeg, 0, 200);
-	softPwmCreate(RUJoint, 0, 200);
-	softPwmCreate(RDLeg, 0, 200);
-	softPwmCreate(RDJoint, 0, 200);
-
-	// init Position
-	motorRULeg(14);
-	motorRDLeg(14);
-	motorLDLeg(11);
-	motorLULeg(12);
-
-	motorRUJoint(13);
-	motorLDJoint(13);
-	motorLUJoint(15);
-	motorRDJoint(15);	
-	delay(500);
 }
 
 void test()
