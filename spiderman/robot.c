@@ -21,7 +21,7 @@
 #define EXIT 113	// Q
 #define ACTION 101	// E
 
-#define DELAY 300
+#define DELAY 100
 // Need to write global variable
 // current Servo Motor Degree Info 
 int currentLULeg = 0;
