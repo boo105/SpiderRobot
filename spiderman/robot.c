@@ -23,7 +23,7 @@
 #define ACTION2 114 // R
 
 #define INITDELAY 200
-#define WALKDELAY 100
+#define WALKDELAY 1000
 #define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
@@ -415,8 +415,8 @@ void movementManager()
 		switch (c)
 		{
 			case UP :
-				// forward();
-				forwardTest();
+				forward();
+				//forwardTest();
 				printf("앞으로 이동\n"); 
 				break;
 			case DOWN :
