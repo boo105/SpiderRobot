@@ -95,7 +95,7 @@ void initPosition()
 {
 	// init Position
 	motorRULeg(14);
-	motorRDLeg(12);
+	motorRDLeg(17);
 	motorLDLeg(11);
 	motorLULeg(12);
 
