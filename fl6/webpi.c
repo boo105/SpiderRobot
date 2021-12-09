@@ -12,7 +12,7 @@
 #include <sys/socket.h>
 
 // wiringPi에서 GPIO 18번이 1번이다
-#define LED 1
+#define LED 25 
 
 static void *clnt_connection(void *arg);
 int sendData(int fd, FILE *fp, char *file_name);
@@ -37,7 +37,7 @@ int main(int argc, char **argv)
     }
     
     wiringPiSetup();
-    pinMode(1, OUTPUT);
+    pinMode(LED, OUTPUT);
     
     serv_sock = socket(AF_INET, SOCK_STREAM, 0);
     if(serv_sock < 0) {
