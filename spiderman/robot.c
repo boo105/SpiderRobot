@@ -20,6 +20,7 @@
 #define RIGHT 100	// D
 #define EXIT 113	// Q
 #define ACTION 101	// E
+#define ACTION2 114 // R
 
 #define INITDELAY 200
 #define WALKDELAY 100
@@ -359,7 +360,6 @@ void dapForDance2(int operationLimit,int dir)
 	}
 }
 
-// need to reactoring
 void dance2()
 {
 	for(int i = 0; i < 5; i++)
@@ -412,6 +412,10 @@ void movementManager()
 				// dance2();
 				printf("춤을 춥니다.\n");
 				break;
+			case ACTION2 :
+				dance2();
+				printf("춤2을 춥니다\n");
+				break;
 			case EXIT :
 				printf("프로그램을 종료합니다\n");
 				return;
@@ -421,28 +425,7 @@ void movementManager()
 	}
 }
 
-void test()
-{
-	int degree = 1;
-
-	for (int i = 0; i<19; i++)
-	{
-		printf("%d도 작동\n",degree);
-		moveServeMotor(LULeg, degree);    
-		// moveServeMotor(LUJoint, degree);
-		moveServeMotor(LDLeg, degree); 
-		// moveServeMotor(LDJoint, degree); 
-
-		moveServeMotor(RULeg, degree);
-		// moveServeMotor(RUJoint, degree); 
-		moveServeMotor(RDLeg, degree);
-		// moveServeMotor(RDJoint, degree); 
-		degree += 1;
-		delay(INITDELAY);
-	}
-}
-
-void test2(int degree)
+void test(int degree)
 {
 	softPwmWrite(LULeg, degree);
 	// softPwmWrite(LUJoint, degree);
@@ -460,11 +443,8 @@ int main()
 	if (wiringPiSetup() == -1)
 		return 1;
 
-	init();
-	// softPwmWrite(LDLeg, 20);	
-	// softPwmWrite(LDJoint, 20);	
-	// test();
-	// test2(10);
+	init();	
+	// test(10);
 	movementManager();	
 
 	return 0;
