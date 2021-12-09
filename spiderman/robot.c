@@ -275,7 +275,7 @@ void dapForDance2(int operationLimit,int dir)
 		motorRULeg(currentRULeg + ( dir * -1));
 		motorLDLeg(currentLDLeg + dir);
 		motorRDLeg(currentRDLeg + dir);
-		delay(DELAY);
+		delay(DANCEDELAY);
 	}
 }
 
@@ -358,7 +358,7 @@ void test()
 		moveServeMotor(RDLeg, degree);
 		// moveServeMotor(RDJoint, degree); 
 		degree += 1;
-		delay(DELAY);
+		delay(INITDELAY);
 	}
 }
 
@@ -372,7 +372,7 @@ void test2(int degree)
 	// softPwmWrite(RUJoint, degree);
 	softPwmWrite(RDLeg, degree);
 	// softPwmWrite(RDJoint, degree);
-	delay(DELAY);
+	delay(INITDELAY);
 }
 
 int main()
