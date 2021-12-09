@@ -21,26 +21,18 @@
 #define EXIT 113	// Q
 #define ACTION 101	// E
 
-/*
-I think
-This source code should write to OOP
-*/
+// Need to write global variable
+// current Servo Motor Degree Info 
 
-/*
-Need to write global variable
-current Servo Motor Degree Info 
-
-int currentLULeg = 5;
-int currentLUJoint = 11;
+int currentLULeg = 0;
+int currentLUJoint = 0;
 int currentLDLeg = 0;
-int currentLDJoint = 10;
+int currentLDJoint = 0;
 
-int currentRULeg = 20;
-int currentRUJoint = 19;
-int currentRDLeg = 12;
-int currentRDJoint = 12;
-
-*/
+int currentRULeg = 0;
+int currentRUJoint = 0;
+int currentRDLeg = 0;
+int currentRDJoint = 0;
 
 // actually do move serve motor
 void moveServeMotor(char wiringPin, int degree)
@@ -50,29 +42,53 @@ void moveServeMotor(char wiringPin, int degree)
 
 // left leg and joint movement
 void motorLULeg(int degree)
-{ moveServeMotor(LULeg, degree); }
+{
+	currentLULeg = degree;
+	moveServeMotor(LULeg, degree); 
+}
 
 void motorLUJoint(int degree)
-{ moveServeMotor(LUJoint, degree); }
+{ 
+	currentLUJoint = degree;
+	moveServeMotor(LUJoint, degree); 
+}
 
 void motorLDLeg(int degree)
-{ moveServeMotor(LDLeg, degree); }
+{
+	currentLDLeg = degree; 
+	moveServeMotor(LDLeg, degree); 
+}
 
 void motorLDJoint(int degree)
-{ moveServeMotor(LDJoint, degree); }
+{ 
+	currentLDJoint = degree;
+	moveServeMotor(LDJoint, degree); 
+}
 
 // right leg and joint movement 
 void motorRULeg(int degree)
-{ moveServeMotor(RULeg, degree); }
+{
+	currentRULeg = degree; 
+	moveServeMotor(RULeg, degree); 
+}
 
 void motorRUJoint(int degree)
-{ moveServeMotor(RUJoint, degree); }
+{
+	currentRUJoint = degree; 
+	moveServeMotor(RUJoint, degree); 
+}
 
 void motorRDLeg(int degree)
-{ moveServeMotor(RDLeg, degree); }
+{ 
+	currentRDLeg = degree;
+	moveServeMotor(RDLeg, degree); 
+}
 
 void motorRDJoint(int degree)
-{ moveServeMotor(RDJoint, degree); }
+{
+	currentRDJoint = degree; 
+	moveServeMotor(RDJoint, degree); 
+}
 
 
 void initPosition()
@@ -140,16 +156,16 @@ void dance()
 	int currentRUJoint = 19;
 	int currentLULeg = 5;
 	int currentRULeg = 20;
+
 	int currentRDJoint = 12;
 	int currentLDJoint = 10;
 
-	motorLUJoint(currentLUJoint);
-	motorRUJoint(currentRUJoint);
-	motorLULeg(currentLULeg);
-	motorRULeg(currentRULeg);	
+	motorLUJoint(11);
+	motorRUJoint(19);
+	motorLULeg(5);
+	motorRULeg(20);	
 	delay(500);
 	
-	int degree = 1;
 	int dir = 1;
 	for(int i = 0; i < 9; i++)
 	{
@@ -171,14 +187,10 @@ void dapForDance2(int operationLimit,int dir)
 {
 	for (int i = 0; i < operationLimit; i++)
 	{
-		currentLULeg += ( dir * -1);
-		currentRULeg += ( dir * -1);
-		currentLDLeg += dir;
-		currentRDLeg += dir;
-		motorLULeg(currentLULeg);
-		motorRULeg(currentRULeg);
-		motorLDLeg(currentLDLeg);
-		motorRDLeg(currentRDLeg);
+		motorLULeg(currentLULeg + (dir * -1));
+		motorRULeg(currentRULeg + ( dir * -1));
+		motorLDLeg(currentLDLeg + dir);
+		motorRDLeg(currentRDLeg + dir;);
 		delay(100);
 	}
 }
@@ -187,20 +199,11 @@ void dapForDance2(int operationLimit,int dir)
 void dance2()
 {
 	initPosition();
-	
-	// This should be removed and replacing to global variable
-	int currentLULeg = 12;
-	int currentRULeg = 14;
-	int currentLDLeg = 11;
-	int currentRDLeg = 14;
 
 	int dir = 1;
-
 	// Left Dap
 	dapForDance2(4, dir);
-
 	dir *= -1;
-
 	// Right Dap
 	dapForDance2(8, dir);
 }
