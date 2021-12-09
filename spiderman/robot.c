@@ -25,7 +25,7 @@
 
 #define INITDELAY 200
 #define WALKDELAY 150
-#define DANCEDELAY 200
+#define DANCEDELAY 300
 // Need to write global variable
 // current Servo Motor Degree Info 
 int currentLULeg = 0;
@@ -404,7 +404,7 @@ void hi() {
 	motorRULeg(20);
 	delay(DANCEDELAY);
 
-	for(int i = 0; i < 5; i++) {
+	for(int i = 0; i < 4; i++) {
 		motorRUJoint(15);
 		delay(DANCEDELAY);
 		motorRUJoint(20);
