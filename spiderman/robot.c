@@ -188,13 +188,15 @@ void forwardTest() {
 	motorRDJoint(15);
 	delay(WALKDELAY);
 
-	motorLULeg(8);
-	motorRULeg(18);
-	delay(WALKDELAY);
+	for(int i = 0; i < 5; i++) {
+		motorLULeg(8);
+		motorRULeg(18);
+		delay(WALKDELAY);
 
-	motorLULeg(15);
-	motorRULeg(10);
-	delay(WALKDELAY);
+		motorLULeg(15);
+		motorRULeg(10);
+		delay(WALKDELAY);
+	}
 }
 
 void backward()
