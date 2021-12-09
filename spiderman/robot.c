@@ -183,10 +183,13 @@ void backward()
 	initXPosition();
 
 	motorRULeg(17);
+	delay(WALKDELAY);
 	motorRUJoint(13);
 	delay(WALKDELAY);
 
 	motorRULeg(14);
+	delay(WALKDELAY);
+
 	motorLUJoint(15);
 	motorRUJoint(17);
 	motorLDJoint(13);
@@ -198,6 +201,7 @@ void backward()
 	delay(WALKDELAY);
 
 	motorRDLeg(10);
+	delay(WALKDELAY);
 	motorRDJoint(10);
 	delay(WALKDELAY);
 
