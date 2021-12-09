@@ -23,7 +23,7 @@
 #define ACTION2 114 // R
 
 #define INITDELAY 200
-#define WALKDELAY 1000
+#define WALKDELAY 300
 #define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
@@ -97,10 +97,10 @@ void motorRDJoint(int degree)
 void initPosition()
 {
 	// init Position
-	motorRULeg(14);
-	motorRDLeg(17);
-	motorLDLeg(11);
-	motorLULeg(12);
+	motorRULeg(16); // 14
+	motorRDLeg(18); // 17
+	motorLDLeg(13); // 11
+	motorLULeg(10); // 12
 
 	motorRUJoint(13);
 	motorLDJoint(13);
