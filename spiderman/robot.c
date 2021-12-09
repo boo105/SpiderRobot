@@ -186,6 +186,9 @@ void forwardTest() {
 	motorRUJoint(20);
 	motorLDJoint(13);
 	motorRDJoint(15);
+
+	motorLDLeg(15);
+	motorRDLeg(10);
 	delay(WALKDELAY);
 
 	for(int i = 0; i < 5; i++) {
