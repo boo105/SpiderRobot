@@ -24,7 +24,7 @@
 #define ACTION3 104 // H
 
 #define INITDELAY 200
-#define WALKDELAY 200
+#define WALKDELAY 150
 #define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
@@ -154,30 +154,28 @@ void forward()
 	motorLDLeg(15);
 	delay(WALKDELAY);
 
-	motorLDJoint(13);
+	motorLDJoint(10);
 	delay(WALKDELAY);
 
-	motorLDLeg(11);
-	delay(WALKDELAY);
 
 	motorRUJoint(13);
 	motorLDJoint(17);
 	motorRDJoint(15);
 	delay(WALKDELAY);
 
-	motorLUJoint(15);
 	motorRUJoint(17);
+	delay(WALKDELAY);
+
+	motorLUJoint(15);
+	motorLDJoint(13);
 	motorRDJoint(10);
 	delay(WALKDELAY);
 
-	motorLULeg(10);
-	delay(WALKDELAY);
+	// motorLUJoint(10);
+	// delay(WALKDELAY);
 
-	motorLUJoint(10);
-	delay(WALKDELAY);
-
-	motorLULeg(12);
-	delay(WALKDELAY);
+	// motorLULeg(12);
+	// delay(WALKDELAY);
 }
 
 void forwardTest() {
@@ -412,6 +410,8 @@ void hi() {
 		motorRUJoint(20);
 		delay(DANCEDELAY);
 	}
+
+	initXPosition();
 }
 
 void clearLineFromReadBuffer(void)
