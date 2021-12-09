@@ -151,13 +151,15 @@ void rotationToRight()
 
 void shakeJoint(int dir) 
 {
-	for(int i = 0; i < 3; i++) {
-		motorRUJoint(currentRUJoint + dir);
-		motorLDJoint(currentLDJoint + dir);
-		delay(100);
-	}
+	// for(int i = 0; i < 3; i++) {
+	// 	motorRUJoint(currentRUJoint + dir);
+	// 	motorLDJoint(currentLDJoint + dir);
+	// 	delay(100);
+	// }
 
 	for(int i = 0; i < 5; i++) {
+		motorRUJoint(currentRUJoint + dir);
+		motorLDJoint(currentLDJoint + dir);
 		motorLUJoint(currentLUJoint + dir);
 		motorRDJoint(currentRDJoint + dir);
 		delay(100);
