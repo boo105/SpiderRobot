@@ -99,8 +99,8 @@ void initPosition()
 {
 	// init Position
 	motorRULeg(16); // 14
-	motorRDLeg(18); // 17
-	motorLDLeg(13); // 11
+	motorRDLeg(20); // 17
+	motorLDLeg(15); // 11
 	motorLULeg(10); // 12
 
 	motorRUJoint(13);
