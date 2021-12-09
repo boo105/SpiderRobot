@@ -190,7 +190,7 @@ void dapForDance2(int operationLimit,int dir)
 		motorLULeg(currentLULeg + (dir * -1));
 		motorRULeg(currentRULeg + ( dir * -1));
 		motorLDLeg(currentLDLeg + dir);
-		motorRDLeg(currentRDLeg + dir;);
+		motorRDLeg(currentRDLeg + dir);
 		delay(100);
 	}
 }
