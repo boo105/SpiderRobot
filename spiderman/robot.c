@@ -76,7 +76,7 @@ void motorRUJoint(int degree)
 {
 	currentRUJoint = degree; 
 	moveServeMotor(RUJoint, degree); 
-}g
+}
 
 void motorRDLeg(int degree)
 { 
@@ -187,7 +187,7 @@ void dance()
 	int	dir2 = 2;
 
 	for(int i = 0; i < 2; i++) {
-		motorLULeg(currentLULeg + dir2);
+		motorLULeg(currentLULeg + (dir2 * -1));
 		motorRULeg(currentRULeg + (dir2 * -1));
 		delay(DELAY);
 	}
@@ -208,8 +208,8 @@ void dance()
 	dir = 1; 
 	dir2 = -2;
 	for(int i = 0; i < 3; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir2);
+		motorLULeg(currentLULeg + (dir2 *-1));
+		motorRULeg(currentRULeg + (dir2 * -1));
 		
 		motorLUJoint(currentLUJoint + (dir * -1));
 		motorRUJoint(currentRUJoint + (dir * -1));
