@@ -21,9 +21,9 @@
 #define EXIT 113	// Q
 #define ACTION 101	// E
 
+#define DELAY 100
 // Need to write global variable
 // current Servo Motor Degree Info 
-
 int currentLULeg = 0;
 int currentLUJoint = 0;
 int currentLDLeg = 0;
@@ -103,7 +103,17 @@ void initPosition()
 	motorLDJoint(13);
 	motorLUJoint(15);
 	motorRDJoint(15);	
-	delay(500);
+	delay(DELAY);
+}
+
+void initXPosition() 
+{
+	initPosition();
+	motorLUJoint(10);
+	motorRUJoint(17);
+	motorLDJoint(17);
+	motorRDJoint(10);
+	delay(DELAY);
 }
 		
 void init()
@@ -162,7 +172,7 @@ void shakeJoint(int dir)
 		motorLDJoint(currentLDJoint + dir);
 		motorLUJoint(currentLUJoint + dir);
 		motorRDJoint(currentRDJoint + dir);
-		delay(100);
+		delay(DELAY);
 	}
 
 
@@ -171,24 +181,15 @@ void shakeJoint(int dir)
 // need to refactoring
 void dance()
 {
-	initPosition();
-	motorLUJoint(10);
-	motorRUJoint(17);
-	motorLDJoint(17);
-	motorRDJoint(10);
-	delay(100);
+	initXPosition();
 	
-
 	int dir = -1;
+	int	dir2 = 2;
+
 	for(int i = 0; i < 2; i++) {
 		motorLULeg(currentLULeg + dir);
-		delay(100);
-	}
-
-	dir = 1;
-	for(int i = 0; i < 4; i++) {
 		motorRULeg(currentRULeg + dir);
-		delay(100);
+		delay(DELAY);
 	}
 
 	dir = -1;
@@ -197,12 +198,108 @@ void dance()
 		motorRUJoint(currentRUJoint + dir);
 		motorLDJoint(currentLDJoint + dir);
 		motorRDJoint(currentRDJoint + dir);
-		delay(100);
+		delay(DELAY);
 	}
 
 	shakeJoint(1);
 	shakeJoint(-1);
 	shakeJoint(1);
+
+	dir = 1; 
+	dir2 = -2;
+	for(int i = 0; i < 3; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + dir2);
+		
+		motorLUJoint(currentLUJoint + (dir * -1));
+		motorRUJoint(currentRUJoint + (dir * -1));
+		motorLUJoint(currentLUJoint + (dir * -1));
+		motorRUJoint(currentRUJoint + (dir * -1));
+		delay(DELAY);
+	}
+
+	for(int i = 0; i < 5; i++) {
+		motorLDLeg(currentLDLeg + dir);
+		motorRDLeg(currentRDLeg + (dir * -1));
+		delay(DELAY);
+	}
+
+	
+	shakeJoint(1);
+	shakeJoint(-1);
+	shakeJoint(1);
+
+	initPosition();
+
+	dir = -1;
+	dir2 = 2;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRDLeg(currentRDLeg + dir2);
+		delay(DELAY);
+	}
+
+	dir = 1;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + dir2);
+		motorLDLeg(currentLDLeg + (dir2 * -1));
+		motorRDLeg(currentRDLeg + (dir2 * -1));
+		delay(DELAY);
+	}
+
+	dir = -1;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + (dir2 * -1));
+		motorLDLeg(currentLDLeg + dir2);
+		motorRDLeg(currentRDLeg + dir2);
+		delay(DELAY);
+	}
+
+	dir = 1;
+	dir2 = 2;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + dir2);
+		motorLDLeg(currentLDLeg + (dir2 * -1));
+		motorRDLeg(currentRDLeg + (dir2 * -1));
+		delay(DELAY);
+	}
+
+	initXPosition();
+
+	dir = -1;
+	dir = 2;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + dir2);
+		motorLDLeg(currentLDLeg + dir2);
+		motorRDLeg(currentRDLeg + (dir2 * -1));
+		delay(DELAY);
+	}
+
+	dir = 1;
+	dir = 2;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + (dir2 * -1));
+		motorLDLeg(currentLDLeg + (dir2 * -1));
+		motorRDLeg(currentRDLeg + dir2);
+		delay(DELAY);
+	}
+
+	dir = -1;
+	dir = 2;
+	for(int i = 0; i < 4; i++) {
+		motorLULeg(currentLULeg + dir);
+		motorRULeg(currentRULeg + dir2);
+		motorLDLeg(currentLDLeg + dir2);
+		motorRDLeg(currentRDLeg + (dir2 * -1));
+		delay(DELAY);
+	}
+
+	initXPosition();
 }
 
 void dapForDance2(int operationLimit,int dir)
@@ -213,7 +310,7 @@ void dapForDance2(int operationLimit,int dir)
 		motorRULeg(currentRULeg + ( dir * -1));
 		motorLDLeg(currentLDLeg + dir);
 		motorRDLeg(currentRDLeg + dir);
-		delay(100);
+		delay(DELAY);
 	}
 }
 
@@ -296,7 +393,7 @@ void test()
 		moveServeMotor(RDLeg, degree);
 		// moveServeMotor(RDJoint, degree); 
 		degree += 1;
-		delay(500);
+		delay(DELAY);
 	}
 }
 
@@ -310,7 +407,7 @@ void test2(int degree)
 	// softPwmWrite(RUJoint, degree);
 	softPwmWrite(RDLeg, degree);
 	// softPwmWrite(RDJoint, degree);
-	delay(500);
+	delay(DELAY);
 }
 
 int main()
