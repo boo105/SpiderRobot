@@ -180,6 +180,29 @@ void forward()
 
 void backward()
 {
+	initXPosition();
+
+	motorRULeg(17);
+	motorRUJoint(13);
+	delay(WALKDELAY);
+
+	motorRULeg(14);
+	motorLUJoint(15);
+	motorRUJoint(17);
+	motorLDJoint(13);
+	delay(WALKDELAY);
+
+	motorLUJoint(10);
+	motorRDJoint(15);
+	motorLDJoint(17);
+	delay(WALKDELAY);
+
+	motorRDLeg(10);
+	motorRDJoint(10);
+	delay(WALKDELAY);
+
+	motorRDLeg(14);
+	delay(WALKDELAY);
 }
 
 void rotationToLeft()
