@@ -23,7 +23,7 @@
 #define ACTION2 114 // R
 
 #define INITDELAY 200
-#define WALKDELAY 300
+#define WALKDELAY 50
 #define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
@@ -162,15 +162,11 @@ void forward()
 	motorRUJoint(13);
 	motorLDJoint(17);
 	motorRDJoint(15);
-
-	motorLUJoint(8);
 	delay(WALKDELAY);
 
 	motorLUJoint(15);
 	motorRUJoint(17);
 	motorRDJoint(10);
-
-	motorLUJoint(10);
 	delay(WALKDELAY);
 
 	motorLULeg(10);
