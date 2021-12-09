@@ -149,38 +149,52 @@ void rotationToRight()
 {
 }
 
+void shakeJoint(int dir) 
+{
+	for(int i = 0; i < 3; i++) {
+		motorRUJoint(currentRUJoint + dir);
+		motorLDJoint(currentLDJoint + dir);
+		delay(50);
+	}
+
+	for(int i = 0; i < 5; i++) {
+		motorLUJoint(currentLUJoint + dir);
+		motorRDJoint(currentRDJoint + dir);
+		delay(50);
+	}
+
+
+}
+
 // need to refactoring
 void dance()
 {
-	int currentLUJoint = 11;
-	int currentRUJoint = 19;
-	int currentLULeg = 5;
-	int currentRULeg = 20;
+	initPosition();
 
-	int currentRDJoint = 12;
-	int currentLDJoint = 10;
-
-	motorLUJoint(11);
-	motorRUJoint(19);
-	motorLULeg(5);
-	motorRULeg(20);	
-	delay(500);
-	
-	int dir = 1;
-	for(int i = 0; i < 9; i++)
-	{
-		currentRUJoint += ( dir * -1 );
-		motorRUJoint(currentRUJoint);
+	int dir = -1;
+	for(int i = 0; i < 2; i++) {
+		motorLULeg(currentLULeg + dir);
 		delay(50);
 	}
-	
-	dir *= -1;
-	for(int i = 0; i < 9; i++)
-	{
-		currentRUJoint += ( dir * -1);
-		motorRUJoint(currentRUJoint); 
+
+	dir = 1;
+	for(int i = 0; i < 4; i++) {
+		motorRULeg(currentRULeg + dir);
 		delay(50);
 	}
+
+	dir = -1;
+	for(int i = 0; i < 2; i++) {
+		motorLUJoint(currentLUJoint + dir);
+		motorRUJoint(currentRUJoint + dir);
+		motorLDJoint(currentLDJoint + dir);
+		motorRDJoint(currentRDJoint + dir);
+		delay(50);
+	}
+
+	shakeJoint(1);
+	shakeJoint(-1);
+	shakeJoint(1);
 }
 
 void dapForDance2(int operationLimit,int dir)
@@ -198,14 +212,18 @@ void dapForDance2(int operationLimit,int dir)
 // need to reactoring
 void dance2()
 {
-	initPosition();
+	for(int i = 0; i < 5; i++)
+	{
+		initPosition();
 
-	int dir = 1;
-	// Left Dap
-	dapForDance2(4, dir);
-	dir *= -1;
-	// Right Dap
-	dapForDance2(8, dir);
+		int dir = 1;
+		// Left Dap
+		dapForDance2(4, dir);
+		dir *= -1;
+		// Right Dap
+		dapForDance2(8, dir);
+	}
+	initPosition();
 }
 
 void clearLineFromReadBuffer(void)
@@ -240,10 +258,7 @@ void movementManager()
 				printf("오른쪽으로 회전\n");
 				break;
 			case ACTION :
-				for(int i=0; i<5; i++)
-				{
-					dance2();
-				}
+				dance2();
 				printf("춤을 춥니다.\n");
 				break;
 			case EXIT :
