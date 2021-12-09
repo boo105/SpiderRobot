@@ -170,6 +170,12 @@ void shakeJoint(int dir)
 void dance()
 {
 	initPosition();
+	motorLUJoint(10);
+	motorRUJoint(17);
+	motorLDJoint(17);
+	motorRDJoint(10);
+	delay(100);
+	
 
 	int dir = -1;
 	for(int i = 0; i < 2; i++) {
