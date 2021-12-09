@@ -154,13 +154,13 @@ void shakeJoint(int dir)
 	for(int i = 0; i < 3; i++) {
 		motorRUJoint(currentRUJoint + dir);
 		motorLDJoint(currentLDJoint + dir);
-		delay(50);
+		delay(100);
 	}
 
 	for(int i = 0; i < 5; i++) {
 		motorLUJoint(currentLUJoint + dir);
 		motorRDJoint(currentRDJoint + dir);
-		delay(50);
+		delay(100);
 	}
 
 
@@ -174,13 +174,13 @@ void dance()
 	int dir = -1;
 	for(int i = 0; i < 2; i++) {
 		motorLULeg(currentLULeg + dir);
-		delay(50);
+		delay(100);
 	}
 
 	dir = 1;
 	for(int i = 0; i < 4; i++) {
 		motorRULeg(currentRULeg + dir);
-		delay(50);
+		delay(100);
 	}
 
 	dir = -1;
@@ -189,7 +189,7 @@ void dance()
 		motorRUJoint(currentRUJoint + dir);
 		motorLDJoint(currentLDJoint + dir);
 		motorRDJoint(currentRDJoint + dir);
-		delay(50);
+		delay(100);
 	}
 
 	shakeJoint(1);
@@ -258,7 +258,8 @@ void movementManager()
 				printf("오른쪽으로 회전\n");
 				break;
 			case ACTION :
-				dance2();
+				dance();
+				// dance2();
 				printf("춤을 춥니다.\n");
 				break;
 			case EXIT :
