@@ -21,7 +21,9 @@
 #define EXIT 113	// Q
 #define ACTION 101	// E
 
-#define DELAY 100
+#define INITDELAY 200
+#define WALKDELAY 100
+#define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
 int currentLULeg = 0;
@@ -103,7 +105,7 @@ void initPosition()
 	motorLDJoint(13);
 	motorLUJoint(15);
 	motorRDJoint(15);	
-	delay(DELAY);
+	delay(INITDELAY);
 }
 
 void initXPosition() 
@@ -113,7 +115,7 @@ void initXPosition()
 	motorRUJoint(17);
 	motorLDJoint(17);
 	motorRDJoint(10);
-	delay(DELAY);
+	delay(INITDELAY);
 }
 		
 void init()
@@ -148,32 +150,32 @@ void forward()
 	initXPosition();
 	
 	motorLDLeg(15);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLDJoint(13);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLDLeg(11);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorRUJoint(13);
 	motorLDJoint(17);
 	motorRDJoint(15);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLUJoint(15);
 	motorRUJoint(17);
 	motorRDJoint(10);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLULeg(10);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLUJoint(10);
-	delay(DELAY);
+	delay(WALKDELAY);
 
 	motorLULeg(12);
-	delay(DELAY);
+	delay(WALKDELAY);
 }
 
 void backward()
@@ -194,13 +196,13 @@ void shakeJoint()
 	motorRUJoint(15);
 	motorLDJoint(15);
 	motorRDJoint(8);
-	delay(DELAY);
+	delay(DANCEDELAY);
 
 	motorLUJoint(13);
 	motorRUJoint(18);
 	motorLDJoint(18);
 	motorRDJoint(13);
-	delay(DELAY);
+	delay(DANCEDELAY);
 }
 
 void danceSecondPart() 
@@ -209,7 +211,7 @@ void danceSecondPart()
 	motorRULeg(20);
 	motorLDLeg(11);
 	motorRDLeg(8);
-	delay(DELAY);
+	delay(DANCEDELAY);
 }
 
 void stretching()
@@ -218,7 +220,7 @@ void stretching()
 	motorRULeg(20);
 	motorLDLeg(20);
 	motorRDLeg(8);
-	delay(DELAY);
+	delay(DANCEDELAY);
 }
 
 // need to refactoring
@@ -228,7 +230,7 @@ void dance()
 	
 	motorLULeg(10);
 	motorRULeg(18);
-	delay(DELAY);
+	delay(DANCEDELAY);
 
 	shakeJoint();
 	shakeJoint();
@@ -237,7 +239,7 @@ void dance()
 
 	motorLDLeg(15);
 	motorRDLeg(8);
-	delay(DELAY);
+	delay(DANCEDELAY);
 
 	shakeJoint();
 	shakeJoint();
@@ -245,7 +247,7 @@ void dance()
 	initPosition();
 	motorLULeg(8);
 	motorLDLeg(20);
-	delay(DELAY);
+	delay(DANCEDELAY);
 
 	danceSecondPart();
 	
@@ -253,7 +255,7 @@ void dance()
 	motorRULeg(14);
 	motorLDLeg(20);
 	motorRDLeg(14);
-	delay(DELAY);
+	delay(DANCEDELAY);
 
 	danceSecondPart();
 
