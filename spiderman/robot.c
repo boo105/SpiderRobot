@@ -205,7 +205,7 @@ void backward()
 	motorRDJoint(10);
 	delay(WALKDELAY);
 
-	motorRDLeg(14);
+	motorRDLeg(20);
 	delay(WALKDELAY);
 }
 
