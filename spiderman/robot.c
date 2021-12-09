@@ -145,6 +145,35 @@ void init()
 // Spider Robot has Movement fucntion
 void forward()
 {
+	initXPosition();
+	
+	motorLDLeg(15);
+	delay(DELAY);
+
+	motorLDJoint(13);
+	delay(DELAY);
+
+	motorLDLeg(11);
+	delay(DELAY);
+
+	motorRUJoint(13);
+	motorLDJoint(17);
+	motorRDJoint(15);
+	delay(DELAY);
+
+	motorLUJoint(15);
+	motorRUJoint(17);
+	motorRDJoint(10);
+	delay(DELAY);
+
+	motorLULeg(10);
+	delay(DELAY);
+
+	motorLUJoint(10);
+	delay(DELAY);
+
+	motorLULeg(12);
+	delay(DELAY);
 }
 
 void backward()
