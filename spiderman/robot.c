@@ -242,7 +242,7 @@ void dance()
 	dir = 1;
 	for(int i = 0; i < 4; i++) {
 		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir2);
+		motorRULeg(currentRULeg + dir);
 		motorLDLeg(currentLDLeg + (dir2 * -1));
 		motorRDLeg(currentRDLeg + (dir2 * -1));
 		delay(DELAY);
@@ -251,7 +251,7 @@ void dance()
 	dir = -1;
 	for(int i = 0; i < 4; i++) {
 		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + (dir2 * -1));
+		motorRULeg(currentRULeg + dir);
 		motorLDLeg(currentLDLeg + dir2);
 		motorRDLeg(currentRDLeg + dir2);
 		delay(DELAY);
@@ -261,7 +261,7 @@ void dance()
 	dir2 = 2;
 	for(int i = 0; i < 4; i++) {
 		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir2);
+		motorRULeg(currentRULeg + dir);
 		motorLDLeg(currentLDLeg + (dir2 * -1));
 		motorRDLeg(currentRDLeg + (dir2 * -1));
 		delay(DELAY);
