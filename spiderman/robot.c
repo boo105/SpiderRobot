@@ -188,7 +188,7 @@ void dance()
 
 	for(int i = 0; i < 2; i++) {
 		motorLULeg(currentLULeg + (dir2 * -1));
-		motorRULeg(currentRULeg + (dir2 * -1));
+		motorRULeg(currentRULeg + dir2);
 		delay(DELAY);
 	}
 
@@ -208,7 +208,7 @@ void dance()
 	dir = 1; 
 	dir2 = -2;
 	for(int i = 0; i < 3; i++) {
-		motorLULeg(currentLULeg + (dir2 *-1));
+		motorLULeg(currentLULeg + dir2);
 		motorRULeg(currentRULeg + (dir2 * -1));
 		
 		motorLUJoint(currentLUJoint + (dir * -1));
