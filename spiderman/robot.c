@@ -179,6 +179,24 @@ void forward()
 	delay(WALKDELAY);
 }
 
+void forwardTest() {
+	initXPosition();
+
+	motorLUJoint(8);
+	motorRUJoint(20);
+	motorLDJoint(13);
+	motorRDJoint(15);
+	delay(WALKDELAY);
+
+	motorLULeg(8);
+	motorRULeg(18);
+	delay(WALKDELAY);
+
+	motorLULeg(15);
+	motorRULeg(10);
+	delay(WALKDELAY);
+}
+
 void backward()
 {
 	initXPosition();
@@ -392,7 +410,8 @@ void movementManager()
 		switch (c)
 		{
 			case UP :
-				forward();
+				// forward();
+				forwardTest();
 				printf("앞으로 이동\n"); 
 				break;
 			case DOWN :
