@@ -162,11 +162,15 @@ void forward()
 	motorRUJoint(13);
 	motorLDJoint(17);
 	motorRDJoint(15);
+
+	motorLUJoint(8);
 	delay(WALKDELAY);
 
 	motorLUJoint(15);
 	motorRUJoint(17);
 	motorRDJoint(10);
+
+	motorLUJoint(10);
 	delay(WALKDELAY);
 
 	motorLULeg(10);
