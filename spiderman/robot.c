@@ -95,7 +95,7 @@ void initPosition()
 {
 	// init Position
 	motorRULeg(14);
-	motorRDLeg(14);
+	motorRDLeg(12);
 	motorLDLeg(11);
 	motorLULeg(12);
 
@@ -188,23 +188,37 @@ void rotationToRight()
 {
 }
 
-void shakeJoint(int dir) 
+void shakeJoint() 
 {
-	// for(int i = 0; i < 3; i++) {
-	// 	motorRUJoint(currentRUJoint + dir);
-	// 	motorLDJoint(currentLDJoint + dir);
-	// 	delay(100);
-	// }
+	motorLUJoint(8);
+	motorRUJoint(15);
+	motorLDJoint(15);
+	motorRDJoint(8);
+	delay(DELAY);
 
-	for(int i = 0; i < 5; i++) {
-		motorRUJoint(currentRUJoint + dir);
-		motorLDJoint(currentLDJoint + dir);
-		motorLUJoint(currentLUJoint + dir);
-		motorRDJoint(currentRDJoint + dir);
-		delay(DELAY);
-	}
+	motorLUJoint(13);
+	motorRUJoint(18);
+	motorLDJoint(18);
+	motorRDJoint(13);
+	delay(DELAY);
+}
 
+void danceSecondPart() 
+{
+	motorLULeg(12);
+	motorRULeg(20);
+	motorLDLeg(11);
+	motorRDLeg(8);
+	delay(DELAY);
+}
 
+void stretching()
+{
+	motorLULeg(8);
+	motorRULeg(20);
+	motorLDLeg(20);
+	motorRDLeg(8);
+	delay(DELAY);
 }
 
 // need to refactoring
@@ -212,122 +226,42 @@ void dance()
 {
 	initXPosition();
 	
-	int dir = -1;
-	int	dir2 = 2;
+	motorLULeg(10);
+	motorRULeg(18);
+	delay(DELAY);
 
-	for(int i = 0; i < 2; i++) {
-		motorLULeg(currentLULeg + (dir2 * -1));
-		motorRULeg(currentRULeg + dir2);
-		delay(DELAY);
-	}
-
-	dir = -1;
-	for(int i = 0; i < 2; i++) {
-		motorLUJoint(currentLUJoint + dir);
-		motorRUJoint(currentRUJoint + dir);
-		motorLDJoint(currentLDJoint + dir);
-		motorRDJoint(currentRDJoint + dir);
-		delay(DELAY);
-	}
-
-	shakeJoint(1);
-	shakeJoint(-1);
-	shakeJoint(1);
-
-	dir = 1; 
-	dir2 = -2;
-	for(int i = 0; i < 3; i++) {
-		motorLULeg(currentLULeg + dir2);
-		motorRULeg(currentRULeg + (dir2 * -1));
-		
-		motorLUJoint(currentLUJoint + (dir * -1));
-		motorRUJoint(currentRUJoint + (dir * -1));
-		motorLUJoint(currentLUJoint + (dir * -1));
-		motorRUJoint(currentRUJoint + (dir * -1));
-		delay(DELAY);
-	}
-
-	for(int i = 0; i < 5; i++) {
-		motorLDLeg(currentLDLeg + dir);
-		motorRDLeg(currentRDLeg + (dir * -1));
-		delay(DELAY);
-	}
-
-	
-	shakeJoint(1);
-	shakeJoint(-1);
-	shakeJoint(1);
-
-	initPosition();
-
-	dir = -1;
-	dir2 = 2;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRDLeg(currentRDLeg + dir2);
-		delay(DELAY);
-	}
-
-	dir = 1;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir);
-		motorLDLeg(currentLDLeg + (dir2 * -1));
-		motorRDLeg(currentRDLeg + (dir2 * -1));
-		delay(DELAY);
-	}
-
-	dir = -1;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir);
-		motorLDLeg(currentLDLeg + dir2);
-		motorRDLeg(currentRDLeg + dir2);
-		delay(DELAY);
-	}
-
-	dir = 1;
-	dir2 = 2;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir);
-		motorLDLeg(currentLDLeg + (dir2 * -1));
-		motorRDLeg(currentRDLeg + (dir2 * -1));
-		delay(DELAY);
-	}
+	shakeJoint();
+	shakeJoint();
 
 	initXPosition();
 
-	dir = -1;
-	dir = 2;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir2);
-		motorLDLeg(currentLDLeg + dir2);
-		motorRDLeg(currentRDLeg + (dir2 * -1));
-		delay(DELAY);
-	}
+	motorLDLeg(15);
+	motorRDLeg(8);
+	delay(DELAY);
 
-	dir = 1;
-	dir = 2;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + (dir2 * -1));
-		motorLDLeg(currentLDLeg + (dir2 * -1));
-		motorRDLeg(currentRDLeg + dir2);
-		delay(DELAY);
-	}
+	shakeJoint();
+	shakeJoint();
 
-	dir = -1;
-	dir = 2;
-	for(int i = 0; i < 4; i++) {
-		motorLULeg(currentLULeg + dir);
-		motorRULeg(currentRULeg + dir2);
-		motorLDLeg(currentLDLeg + dir2);
-		motorRDLeg(currentRDLeg + (dir2 * -1));
-		delay(DELAY);
-	}
+	initPosition();
+	motorLULeg(8);
+	motorLDLeg(20);
+	delay(DELAY);
 
+	danceSecondPart();
+	
+	motorLULeg(8);
+	motorRULeg(14);
+	motorLDLeg(20);
+	motorRDLeg(14);
+	delay(DELAY);
+
+	danceSecondPart();
+
+	initXPosition();
+
+	stretching();
+	initXPosition();
+	stretching();
 	initXPosition();
 }
 
