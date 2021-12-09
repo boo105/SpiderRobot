@@ -211,10 +211,63 @@ void backward()
 
 void rotationToLeft()
 {
+	initXPosition();
+
+	motorLDLeg(20);
+	delay(WALKDELAY);
+
+	motorRUJoint(20);
+	motorLDJoint(20);
+	delay(WALKDELAY);
+
+	motorRULeg(14);
+	motorLDLeg(11);
+	delay(WALKDELAY);
+
+	motorLULeg(8);
+	motorRDLeg(8);
+	delay(WALKDELAY);
+
+	motorLUJoint(15);
+	motorRDJoint(15);
+	delay(WALKDELAY);
+
+	motorLULeg(12);
+	motorRDLeg(14);
+	delay(WALKDELAY);
+
+	initXPosition();
 }
 
 void rotationToRight()
 {
+	initXPosition();
+
+	motorLULeg(8);
+	motorRDLeg(8);
+	delay(WALKDELAY);
+
+	motorLUJoint(8);
+	motorRDJoint(8);
+	delay(WALKDELAY);
+
+	motorLULeg(12);
+	motorRDLeg(14);
+	delay(WALKDELAY);
+
+	motorRULeg(20);
+	motorLDLeg(20);
+	delay(WALKDELAY);
+
+	motorRUJoint(13);
+	motorLDJoint(13);
+	delay(WALKDELAY);
+
+	motorRULeg(14);
+	motorLDLeg(11);
+	delay(WALKDELAY);
+
+	initXPosition();
 }
 
 void shakeJoint() 
