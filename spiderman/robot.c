@@ -21,9 +21,10 @@
 #define EXIT 113	// Q
 #define ACTION 101	// E
 #define ACTION2 114 // R
+#define ACTION3 104 // H
 
 #define INITDELAY 200
-#define WALKDELAY 50
+#define WALKDELAY 200
 #define DANCEDELAY 200
 // Need to write global variable
 // current Servo Motor Degree Info 
@@ -399,6 +400,20 @@ void dance2()
 	initPosition();
 }
 
+void hi() {
+	initXPosition();
+
+	motorRULeg(20);
+	delay(DANCEDELAY);
+
+	for(int i = 0; i < 5; i++) {
+		motorRUJoint(15);
+		delay(DANCEDELAY);
+		motorRUJoint(20);
+		delay(DANCEDELAY);
+	}
+}
+
 void clearLineFromReadBuffer(void)
 { while (getchar() != '\n'); }
 
@@ -439,6 +454,10 @@ void movementManager()
 			case ACTION2 :
 				dance2();
 				printf("춤2을 춥니다\n");
+				break;
+			case ACTION3 :
+				hi();
+				printf("인사!\n");
 				break;
 			case EXIT :
 				printf("프로그램을 종료합니다\n");
